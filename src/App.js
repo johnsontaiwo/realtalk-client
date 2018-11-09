@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
+import ArticleContainer from './Components/ArticlesContainer';
+import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 import './App.css';
+import Home from './Components/Home'
+
+
 
 class App extends Component {
   render() {
+    //debugger
     return (
-      <div className="App">
-        <header className="App-header">
-        
-          <p>
-            Let's Talk
-          </p>
-        </header>
-      </div>
+      <Router >
+       <div className="App">
+        <Route exact path='/' component={Home} />
+        <Route exact path='/articles' component={ArticleContainer} />
+        <Link to='/articles' className="articlesIndex">Articles</Link>
+       </div>
+      </Router >
     );
   }
 }

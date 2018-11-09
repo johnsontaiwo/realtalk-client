@@ -1,14 +1,16 @@
-import  React  from 'react';
+import  React, { Component }  from 'react';
+import Article from './Article';
+import ArticleContainer from './ArticlesContainer'
 
-const Articles = props => {
-  const articles = whatever
-
+class Articles extends Component {
+  render() {
+  const allArticles = this.props.articles.map(article => <Article key={article.id} article={article} deleteArticle={this.props.deleteArticle} />)
   return(
     <div>
-    {articles}
+    
     </div>
     )
-  
+  }
 }
 
 export default Articles
