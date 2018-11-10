@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ArticleInput from './ArticleInput';
 import Articles from  './Articles'
 import { fetchArticles } from '../Actions/actionCreators'
+import Article from './Article'
 
 
 class ArticleContainer extends  Component {
@@ -14,12 +15,15 @@ componentDidMount() {
   render() {
     return(
      <div>
-      <ArticleInput addArticle={this.props.addArticle} />
-      <Articles articles={this.props.articles} deleteArticle={this.props.deleteArticle} />
-     </div>
-  )
+    <Articles articles={this.props.articles} deleteArticle={this.props.deleteArticle} />
+    <ArticleInput addArticle={this.props.addArticle} />
+    </div>
+    )
   }
 }
+      
+
+  
 
 const mapStateToProps = (state) => { 
   return ({
@@ -28,9 +32,5 @@ const mapStateToProps = (state) => {
  }
 
 
-const mapDispatchToProps = dispatch => ({
-  addArticle: title => dispatch({ type: "ADD_ARTICLE", title}),
-  deleteArticle: id => dispatch({ type: "DELETE_ARTICLE", id})
-})
 
 export default connect(mapStateToProps, { fetchArticles })(ArticleContainer)

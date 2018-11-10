@@ -9,25 +9,16 @@ class UserRegistration extends Component {
     password: ''
   }
 
-  handlePasswordChange = event => {
-    event.preventDefault();
+  
+handleChange = event => {
+  const { name, value } = event.target
+      event.preventDefault();
     this.setState({
-     password: event.target.value
-    })
-  }
-handleNameChange = event => {
-    event.preventDefault();
-    this.setState({
-     name:  event.target.value
+     [name]: value
     })
   }
      
-handleEmailChange = event => {
-    event.preventDefault();
-    this.setState({
-     email: event.target.value
-    })
-  }
+
      
 
 handleOnSubmit = event => {
@@ -46,9 +37,9 @@ handleOnSubmit = event => {
      <div>
       <form onSubmit={(event) => this.handleOnSubmit(event)} >
       
-        <input type="text" placeholder="Name" value={this.state.name} onChange={(event) => this.handleNameChange(event)}/>
-        <input type="text" placeholder="email address" value={this.state.email} onChange={(event) => this.handleEmailChange(event)}/>
-        <input type="password" placeholder="password" onChange={(event) => this.handlePasswordChange(event)}/>
+        <input type="text" placeholder="Name" name="name" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
+        <input type="text" placeholder="email address" name="email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
+        <input type="password" placeholder="password" name="password" onChange={(event) => this.handleChange(event)}/>
         <input type="submit" />
        
       </form>

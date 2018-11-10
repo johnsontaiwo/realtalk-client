@@ -9,7 +9,7 @@ articles: []
       id: state.id,
       title: action.title
     }
-    return {...state, articles: action.articles} 
+    return {...state, articles: action.article} 
 
     case "GET_ARTICLES":
      return {...state, articles: action.articles}
