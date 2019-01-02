@@ -1,48 +1,50 @@
 import React, { Component } from 'react';
+import { addArticle } from '../Actions/actionCreators';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class ArticleInput extends Component {
-
+ 
   state = {
-    id: 0,
+    
     title: '',
     content: '',
-    authorName: ''
+    author_name: ''
   }
-  handleOnChange(event) {
-   this.setState({
-    id: this.state.id + 1,
-    title: event.target.value,
-    authorName: event.target.value
-   })
-  }
-  
-  handleChange(event) {
-   this.setState({
-    
-    content: event.target.value,
-    
-   })
-  }
-  handleOnSubmit(event) {
-    event.preventDefault()
-    this.props.addArticle(this.state.title)
+
+  handleChange = event => {
+  const { name, value } = event.target
+      event.preventDefault();
     this.setState({
-      title: '',
-      content: '',
-      authorName: ''
+     [name]: value
     })
   }
 
+  
+  handleOnSubmit = event => {
+    //const { title, content } = this.state
+    event.preventDefault()
+    //debugger
+    //this.props.addArticle(this.props.articleFormData)
+    if (this.state !== '') {this.props.addArticle(this.state)}
+    this.setState({
+      title: '',
+      content: '',
+      author_name: ''
+     
+    })
+  }
+   
   render() {
+     
+    const { title, content, author_name } = this.state
     return(
      <div>
       <form onSubmit={(event) => this.handleOnSubmit(event)}>
-       <input 
-        type="text"
-        placeholder="title"
-        value={this.state.title}
-        onChange={(event) => this.handleOnChange(event)} />
-        <input type="textarea" placeholder="Share something" value={this.state.content} onChange={(event) => this.handleChange(event)} />
+       <input type="text" placeholder="Title" name="title" value={ title } onChange={(event) => this.handleChange(event)} />
+       <input type="textarea" placeholder="Share something" name="content" value={ content } onChange={(event) => this.handleChange(event)} />
+        <input type="text" placeholder="Author Name" name="author_name" value={ author_name } onChange={(event) => this.handleChange(event)} />
+        
        <input type="submit" />
       </form>
      </div>
@@ -50,4 +52,11 @@ class ArticleInput extends Component {
   }
 }
 
-export default ArticleInput;
+
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    { addArticle }, dispatch);
+};
+
+export default connect(null, mapDispatchToProps)(ArticleInput)

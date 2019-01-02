@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { signupUser } from '../Actions/userActions'
+import {  connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { browserHistory, withRouter }  from 'react-router';
 
 class UserRegistration extends Component {
 
   state = {
-    id: 0,
     name: '',
     email: '',
     password: ''
@@ -23,23 +26,27 @@ handleChange = event => {
 
 handleOnSubmit = event => {
   event.preventDefault()
-    //this.props.addArticle(this.state.title)
-    this.setState({
-      name: '',
-      email: '',
-      password: ''
-    })
+    const user = this.state
+   if (user) {this.props.signupUser(user, () => this.props.history.push('/'))}
+    // this.setState( {
+    //   name: '',
+    //   email: '',
+    //   password: ''
+    // })
+    //return user
+    }
 
-}
+
 
   render() {
+    const { name, email, password } = this.state
     return(
      <div>
       <form onSubmit={(event) => this.handleOnSubmit(event)} >
       
-        <input type="text" placeholder="Name" name="name" value={this.state.name} onChange={(event) => this.handleChange(event)}/>
-        <input type="text" placeholder="email address" name="email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
-        <input type="password" placeholder="password" name="password" onChange={(event) => this.handleChange(event)}/>
+        <input type="text" placeholder="Name" name="name" value={ name } onChange={(event) => this.handleChange(event)}/>
+        <input type="text" placeholder="email address" name="email" value={ email } onChange={(event) => this.handleChange(event)}/>
+        <input type="password" placeholder="password" name="password" value={ password } onChange={(event) => this.handleChange(event)}/>
         <input type="submit" />
        
       </form>
@@ -48,4 +55,10 @@ handleOnSubmit = event => {
   }
 }
 
-export default UserRegistration
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    { signupUser }, dispatch);
+};
+
+export default withRouter(connect(undefined, mapDispatchToProps)(UserRegistration))
+
