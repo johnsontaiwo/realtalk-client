@@ -1,13 +1,11 @@
-import  React, { Component }  from 'react';
+import  React  from 'react';
 
-class Comment extends component {
-  render() {
 
-    return(
-      <div>
-     All commens are here
-    </div>
-      )
+const Comment = ({ comment: { id, content, commentator }, articleId, deleteComment }) =>  
+<li className="articleComments">
+   <h5>Content: {content}</h5>
+   <h5>Comment by: {commentator}</h5>
+   <button onClick={ () => deleteComment(articleId, id)}>Delete</button>
+</li>  
 
-  }
-}
+export default Comment

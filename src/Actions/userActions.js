@@ -1,5 +1,11 @@
 const API_URL = 'http://localhost:3001/api/v1'
  
+  export const getUsers = users => {
+    return {type: "GET_USERS",
+    users
+    } 
+  }
+
  export const loginUser = (user, callback) => {
   let data = {
     method: 'POST',
@@ -9,20 +15,16 @@ const API_URL = 'http://localhost:3001/api/v1'
     },
     body: JSON.stringify({ user })
   }
-
   return dispatch => {
     fetch(`${ API_URL }/users/login`, data)
        .then(handleResponse)
       .then(user => {
         if (user.jwt) {
         sessionStorage.setItem('jwt', user.jwt)
-        //debugger
         dispatch({
           type: 'SET_USER',
           payload: user.current
-        })}
-
-
+        })} 
         callback()
       })
       .catch(err => err)
@@ -45,20 +47,17 @@ export const signupUser = (user, callback) => {
       .then(user => {
         if (user.jwt) {
         sessionStorage.setItem('jwt', user.jwt)
-        //debugger
         dispatch({
           type: 'SET_USER',
           payload: user.current
         })}
-
-
         callback()
       })
       .catch(err => err)
   }
 }
-
-export const fetchUser = () => {
+       
+export const fetchUser = (id) => {
   let data = {
     method: 'GET',
     headers: {
@@ -67,9 +66,8 @@ export const fetchUser = () => {
       'Authorization': sessionStorage.jwt
     }
   }
-
   return dispatch => {
-    fetch(`${ API_URL }/users/user`, data)
+    fetch(`${ API_URL }/users/user/${id}`, data)
       .then(response => response.json())
       .then(user => {
         dispatch({
@@ -89,7 +87,6 @@ export const deleteUser = id => {
       'Content-Type': 'application/json'
     }
   }
-
   return dispatch => {
     fetch(`${ API_URL }/users/${ id }`, data)
       .then(response => response.json())
@@ -110,52 +107,17 @@ function handleResponse(response) {
                 logout();
                 //location.reload(true);
             }
-
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
-
         return data;
     });
 }
 
+
 function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
-}
-
-// const authRequest = () => {
-//   return {
-//     type: "AUTHENTICATION_REQUEST"
-//   }
-// }
-
-// const authSuccess = (user, token) => {
-//   return {
-//     type: "AUTHENTICATION_SUCCESS",
-//     user: user,
-//     token: token
-//   }
-// }
-
-// const authFailure = (errors) => {
-//   return {
-//     type: "AUTHENTICATION_FAILURE",
-//     errors: errors
-//   }
-// }
-
-// export const addUser = (user) => {
-//   return {type: "CREATE_USER",
-
-//   user       
-//  }
-// }
-
-export const getUsers = users => {
-  return {type: "GET_USERS",
-  users
-  } 
+  localStorage.removeItem('user');
 }
 
 export const fetchUsers = () => {
@@ -166,16 +128,32 @@ export const fetchUsers = () => {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${sessionStorage.jwt}`
     }),
-     
   })
   return dispatch => {
-    //debugger
     return fetch(request)
           .then(res => res.json())
           .then(users => dispatch(getUsers(users)))
           .catch(error => console.log(error))
   }
 }
+
+
+
+
+
+// export const getUsers = users => {
+//   return {type: "GET_USERS",
+//   users
+//   } 
+// }
+
+
+
+
+
+
+
+     
 
 // // export const createUser = user => {
 // //   return dispatch => {

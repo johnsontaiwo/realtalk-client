@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ArticleInput from './ArticleInput';
+import CommentContainer from  './CommentsContainer'
 import Articles from  './Articles'
-import { fetchArticles, deleteArticle } from '../Actions/actionCreators'
+import { fetchArticles, fetchArticle, deleteArticle } from '../Actions/actionCreators'
+import { fetchComments, deleteComment } from '../Actions/commentActions'
 import Article from './Article'
 
 
@@ -16,25 +18,30 @@ componentDidMount() {
 
   render() {
     return(
-     <div>
-    <ArticleInput addArticle={this.props.addArticle} />
-    <Articles articles={this.props.articles} deleteArticle={this.props.deleteArticle} />
+     <div className="articlesIndex">
+    <Articles articles={this.props.articles} deleteArticle={this.props.deleteArticle} fetchArticle={this.props.fetchArticle} />
     </div>
     )
   }
 }
+  
+    
       
 
   const mapStateToProps = (state) => {
     return({
-      articles: state.articles
+      articles: state.articles.articles
     })
   }
+   
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchArticles,
-  deleteArticle
+  deleteArticle,
+  fetchComments,
+  fetchArticle,
+  deleteComment
 }, dispatch)
   
 

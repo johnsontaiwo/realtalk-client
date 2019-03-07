@@ -10,6 +10,7 @@ class ArticleInput extends Component {
     title: '',
     content: '',
     author_name: ''
+
   }
 
   handleChange = event => {
@@ -22,35 +23,36 @@ class ArticleInput extends Component {
 
   
   handleOnSubmit = event => {
-    //const { title, content } = this.state
+    const article = this.state
     event.preventDefault()
-    //debugger
-    //this.props.addArticle(this.props.articleFormData)
-    if (this.state !== '') {this.props.addArticle(this.state)}
+    if (article.title && article.content && article.author_name) {this.props.addArticle(this.state)}
     this.setState({
       title: '',
       content: '',
       author_name: ''
-     
     })
   }
+     
+      
    
   render() {
      
     const { title, content, author_name } = this.state
     return(
-     <div>
-      <form onSubmit={(event) => this.handleOnSubmit(event)}>
-       <input type="text" placeholder="Title" name="title" value={ title } onChange={(event) => this.handleChange(event)} />
-       <input type="textarea" placeholder="Share something" name="content" value={ content } onChange={(event) => this.handleChange(event)} />
-        <input type="text" placeholder="Author Name" name="author_name" value={ author_name } onChange={(event) => this.handleChange(event)} />
-        
-       <input type="submit" />
+     <div className="articleInput">
+     <p>Share something</p>
+      <form className="articleInputs" onSubmit={(event) => this.handleOnSubmit(event)}>
+        <input className="articleTitle" type="text" placeholder="Title" name="title" value={ title } onChange={(event) => this.handleChange(event)} /> <br />
+        <input className="author" type="text" placeholder="Author Name" name="author_name" value={ author_name } onChange={(event) => this.handleChange(event)} /> <br />
+        <textarea className="articleContent" placeholder="Share here" name="content" value={ content } onChange={(event) => this.handleChange(event)} /> <br />
+       <input className="submitInfo" type="submit" />
       </form>
      </div>
     )
   }
 }
+        
+        
 
 
 

@@ -1,35 +1,58 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom'
-import Articles from './Articles'
-import { deleteArticle } from '../Actions/actionCreators'
+import { Link, Redirect } from 'react-router-dom';
+import Articles from './Articles';
+import CommentContainer from  './CommentsContainer';
+import CommentInput from  './CommentInput';
+import Comment from './Comment';
+import { fetchComments, deleteComment } from '../Actions/commentActions';
+import { deleteArticle, fetchArticle } from '../Actions/actionCreators';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
+
 
 class Article extends Component {
 
- 
-
-  render() {
-    const { article } = this.props
-    return(
-     <div>
-      <li>
-      {article.title}
-      <button onClick={() => this.props.deleteArticle(this.props.article.id)}>Delete</button>
-      </li>
-      </div>
-    )
-
+  componentDidMount() {
+    this.props.fetchArticle(this.props.match.params.id)
   }
-}
-      
-export default Article
-       
-     
-     
-      
 
   
 
+  render() {
+    const article = this.props.article 
+    const allComments = this.props.article.comment && this.props.article.comment.map(comment => <Comment key={ comment.id } comment={ comment } articleId={article.id} deleteComment={this.props.deleteComment} />)
+    
+    return(
+     <div className='articleInfo'>
+     <ul>
+     <li key={article.id}>
+      <h5>Title: {article.title} </h5>
+      <h5>Content: {article.content} </h5>
+      <h5>Author: {article.author_name} </h5>
+      <h5>Comments: { allComments } </h5>
+      <CommentInput article={article} articleId={this.props.article.id} />
+      </li>
+      </ul>
+    </div>
+)}
+
+}
 
 
+  const mapStateToProps = (state) => {
+    return ({
+      article: state.articles.current
+      
+    })
 
+  }
+
+ const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchArticle, deleteComment, fetchComments
+ }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Article)
+ 
 

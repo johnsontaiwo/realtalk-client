@@ -1,6 +1,9 @@
-.App {
+.App ul {
   text-align: center;
+  background-size: cover;
+  background-color: #00ff40;
 }
+  
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -20,6 +23,75 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.articlesIndex li{
+  color: #61dafb;
+  background-color: 
+}
+
+.articleInfo{
+  color: solid black;
+}
+
+.articleContent{
+ margin: 10px;
+ border: 1px solid blue; 
+}
+
+.articleInputs{
+ margin: 10px;
+ border: 1px solid blue; 
+ background-color: #8000ff;
+}
+
+.articleTitle{
+ margin: 10px;
+ border: 1px solid blue; 
+}
+
+.author{
+ margin: 10px;
+ border: 1px solid blue; 
+}
+
+.submitInfo{
+ margin: 10px;
+ border: 1px solid blue; 
+}
+
+.userName{
+  margin: 10px;
+  border: 1px solid blue; 
+}
+ 
+ .userPassword{
+  margin: 10px;
+  border: 1px solid blue; 
+}
+.userEmail{
+  margin: 10px;
+  border: 1px solid blue; 
+}
+.userInfo{
+  text-align: center;
+  margin: 10px;
+  border: 1px solid blue; 
+  background-color: #8000ff;
+}
+
+.articleComments{
+  border: 1px solid;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+div p{
+  text-align: center;
+  font: italic bold 20px/30px Georgia, serif; 
+}
+
+button{
+  margin-left: 30px
 }
 
 @keyframes App-logo-spin {

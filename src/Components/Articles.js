@@ -1,21 +1,34 @@
 import  React, { Component }  from 'react';
 import Article from './Article';
+import Comments from './Comments';
 import ArticleContainer from './ArticlesContainer'
+import ArticleInput from './ArticleInput'
+import CommentContainer from  './CommentsContainer'
 import { Link } from 'react-router-dom'
+import SingleArticle from './singleArticleShow'
 
 class Articles extends Component {
-
- //const allArticles = this.props.articles.articles.map(article => <Article key={article.id} article={article} title={article.title}  deleteArticle={this.props.deleteArticle} />)
-  render() {
-  const allArticles = this.props.articles.articles.map(article => <Article key={article.id} article={ article }  deleteArticle={this.props.deleteArticle} />)
-  return(
-    <div>
-    {allArticles}
-    </div>
+ 
+  render(){
+    const { articles } = this.props
+    return (
+      <div className="articlesIndex">
+      <ul>
+        { 
+          articles.map(article => {
+            return <li key={ article.id }><Link to={ `/articles/${ article.id }` }>{ article.title } </Link> 
+                    <button onClick={() => this.props.deleteArticle(article.id)}>Delete</button>
+                   </li>
+          })
+        }
+       <p> <ArticleInput /> </p>
+      </ul>
+      </div>
     )
   }
 }
-
- export default Articles
+   
+  
+export default Articles
 
 

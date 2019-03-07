@@ -1,7 +1,7 @@
 import React, { Component }  from 'react'
-import { createUser } from '../Actions/actionCreators'
 import { fetchUsers } from '../Actions/userActions'
 import { connect } from 'react-redux';
+import User from './User'
 
  
  class usersContainer extends Component {
@@ -12,10 +12,9 @@ componentDidMount() {
  }
 
   render() {
-
     return(
       <div>
-       <p> User container </p>
+       <User user={this.props.user} />
       </div>
       )
   }
@@ -23,7 +22,7 @@ componentDidMount() {
 
 const mapStateToProps = state => {
   return ({
-    users: state.users
+    user: state.users.current
   })
 }
  

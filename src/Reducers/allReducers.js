@@ -5,8 +5,9 @@ import usersReducer from './users_reducer'
 
 const rootReducer = combineReducers({
  articles: articlesReducer,
- comments: commentsReducer,
  users: usersReducer
 })
+ 
 
 export default rootReducer;
+
