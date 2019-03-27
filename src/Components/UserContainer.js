@@ -2,6 +2,8 @@ import React, { Component }  from 'react'
 import { fetchUsers } from '../Actions/userActions'
 import { connect } from 'react-redux';
 import User from './User'
+import Home from './Home'
+
 
  
  class usersContainer extends Component {
@@ -15,6 +17,7 @@ componentDidMount() {
     return(
       <div>
        <User user={this.props.user} />
+       
       </div>
       )
   }

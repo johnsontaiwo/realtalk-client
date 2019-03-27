@@ -33,6 +33,7 @@ class ArticleInput extends Component {
     })
   }
      
+    
       
    
   render() {
@@ -40,7 +41,7 @@ class ArticleInput extends Component {
     const { title, content, author_name } = this.state
     return(
      <div className="articleInput">
-     <p>Share something</p>
+     <h5>Share something</h5>
       <form className="articleInputs" onSubmit={(event) => this.handleOnSubmit(event)}>
         <input className="articleTitle" type="text" placeholder="Title" name="title" value={ title } onChange={(event) => this.handleChange(event)} /> <br />
         <input className="author" type="text" placeholder="Author Name" name="author_name" value={ author_name } onChange={(event) => this.handleChange(event)} /> <br />

@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import { addComment, fetchComments, deleteComment } from '../Actions/commentActions'
 import CommentInput from './CommentInput';
 import Comments from  './Comments'
+import Comment from  './Comment'
 import Article from './Article'
+
 
 class CommentContainer extends  Component  {
  
- // componentDidMount() {
- //  this.props.fetchComments()
- // }
+ 
+ 
 
 render() {
   

@@ -1,16 +1,16 @@
-import  React, { Component }  from 'react';
+import React, { Component } from 'react';
 import usersContainer from './UserContainer';
-
+import LoginPage from './LoginPage'
+import { connect } from 'react-redux'
 
 class User extends Component {
  
   render() {
-    const  user  = this.props
+    const  { user }  = this.props
+    //debugger
     return (
       <div>
-        <h5>Signed in as
-          { user.email }
-        </h5>
+        <h5> Signed in as: { user.name } </h5>
         
       </div>
     );
@@ -18,5 +18,10 @@ class User extends Component {
 
 }; 
 
+const mapStateToProps = state => {
+  return ({
+    user: state.users.current
+  })
+}
 
-export default User
+export default connect(mapStateToProps)(User)

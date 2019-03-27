@@ -12,6 +12,7 @@ class CommentInput extends  Component  {
      
       content: '',
       commentator: ''
+      
     
   }
 
@@ -36,6 +37,8 @@ class CommentInput extends  Component  {
   }
     
   
+
+
 render() {
   const { content, commentator } = this.state
   return (

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import User from './User'
 import { authenticate } from '../Actions/userActions'
 import { loginUser } from '../Actions/userActions'
 import { bindActionCreators } from 'redux';
@@ -43,6 +44,7 @@ class LoginPage extends Component {
         <input className="userPassword" type="password" placeholder="password" name="password" value={ password } onChange={(event) => this.handleChange(event)}/> < br/>
         <button type="submit" placeholder="Login"> Log in </button>
       </form>
+      
      </div>
     )
   }
