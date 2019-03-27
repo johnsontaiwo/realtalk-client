@@ -4,7 +4,6 @@ import ArticleInput from './Components/ArticleInput';
 import Article from './Components/Article';
 import Articles from './Components/Articles';
 import Comment from './Components/Comment';
-import SingleArticleShow from './Components/singleArticleShow';
 import UserRegistration from './Components/UserInput';
 import LoginPage from './Components/LoginPage';
 import usersContainer from './Components/UserContainer';

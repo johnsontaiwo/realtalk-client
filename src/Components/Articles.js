@@ -5,7 +5,6 @@ import ArticleContainer from './ArticlesContainer'
 import ArticleInput from './ArticleInput'
 import CommentContainer from  './CommentsContainer'
 import { Link } from 'react-router-dom'
-import SingleArticle from './singleArticleShow'
 
 class Articles extends Component {
  

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import User from './User'
 import { signupUser } from '../Actions/userActions'
 import {  connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { browserHistory, withRouter }  from 'react-router';
+
 
 class UserRegistration extends Component {
 
@@ -28,7 +28,10 @@ handleChange = event => {
 handleOnSubmit = event => {
   event.preventDefault()
     const user = this.state
-   if (user) {this.props.signupUser(user, () => this.props.history.push('/'))}
+   if (user.email && user.name && user.password) {this.props.signupUser(user, () => this.props.history.push('/'))}
+    else {
+       window.alert("sorry something went wrong,please ensure all entries are entered")
+      }
     // this.setState( {
     //   name: '',
     //   email: '',
@@ -49,7 +52,6 @@ handleOnSubmit = event => {
         <input className="userPassword" type="password" placeholder="password" name="password" value={ password } onChange={(event) => this.handleChange(event)}/> <br />
         <input type="submit" />
       </form>
-      <User />
       </div>
       )
     }
