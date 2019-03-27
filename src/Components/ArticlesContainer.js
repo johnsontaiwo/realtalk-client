@@ -26,8 +26,6 @@ componentDidMount() {
 }
   
     
-      
-
   const mapStateToProps = (state) => {
     return({
       articles: state.articles.articles
@@ -46,3 +44,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleContainer)
+      

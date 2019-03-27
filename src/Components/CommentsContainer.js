@@ -15,7 +15,6 @@ class CommentContainer extends  Component  {
 
 render() {
   
-//debugger
   return (
     <div>
       <CommentInput addComment={this.props.addComment} articleId={this.props.article.id} />
@@ -26,6 +25,7 @@ render() {
     )
   }
 }
+
 
 
 const mapStateToProps = (state) => {

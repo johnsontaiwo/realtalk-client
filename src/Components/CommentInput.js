@@ -12,16 +12,16 @@ class CommentInput extends  Component  {
      
       content: '',
       commentator: ''
+  }
       
     
-  }
 
   handleChange = event => {
     const { name, value } = event.target
     event.preventDefault()
     this.setState({
      [name]: value }
-      )
+    )
   }
 
   handleOnSubmit = event => {

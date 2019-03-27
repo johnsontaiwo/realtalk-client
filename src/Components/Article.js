@@ -64,14 +64,15 @@ class Article extends Component {
   const mapStateToProps = (state) => {
     return ({
       article: state.articles.current
-      
     })
-
   }
+
+      
 
  const mapDispatchToProps = dispatch => bindActionCreators({
   fetchArticle, deleteArticle, deleteComment, fetchComments
  }, dispatch)
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article)
  

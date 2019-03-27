@@ -32,12 +32,6 @@ handleOnSubmit = event => {
     else {
        window.alert("sorry something went wrong,please ensure all entries are entered")
       }
-    // this.setState( {
-    //   name: '',
-    //   email: '',
-    //   password: ''
-    // })
-    //return user
     }
 
 

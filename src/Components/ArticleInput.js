@@ -34,8 +34,6 @@ class ArticleInput extends Component {
   }
      
     
-      
-   
   render() {
      
     const { title, content, author_name } = this.state
@@ -54,12 +52,14 @@ class ArticleInput extends Component {
 }
         
         
-
-
-
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     { addArticle }, dispatch);
 };
 
 export default connect(null, mapDispatchToProps)(ArticleInput)
+      
+
+
+
+   

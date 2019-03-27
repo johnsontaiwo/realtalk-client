@@ -7,21 +7,20 @@ class User extends Component {
  
   render() {
     const  { user }  = this.props
-    //debugger
     return (
       <div>
         <h5> Signed in as: { user.name } </h5>
-        
       </div>
     );
   }
-
 }; 
+        
 
 const mapStateToProps = state => {
   return ({
     user: state.users.current
   })
 }
+
 
 export default connect(mapStateToProps)(User)
