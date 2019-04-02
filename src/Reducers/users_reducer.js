@@ -1,8 +1,7 @@
-import { createUser } from '../Actions/userActions';
-//import { browserHistory }  from 'react-router';
+
 
  const initialState = {
-  current: {},
+  current: {name: '', email: '', article: []}
   
  }
 

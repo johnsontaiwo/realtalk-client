@@ -7,7 +7,8 @@ import Comment from './Comment';
 import { fetchComments, deleteComment } from '../Actions/commentActions';
 import { deleteArticle, fetchArticle } from '../Actions/actionCreators';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux'
+import User from './User'
 
 
 
