@@ -15,6 +15,8 @@ import Home from './Components/Home'
 
 
 
+
+
 class App extends Component {
   render() {
     //debugger
@@ -32,11 +34,12 @@ class App extends Component {
         <Link to='/userLogin' className="UserLogin">Login</Link> | 
         <Link to='/logout' className="UserLogin">Logout</Link>  
         </li>
+        
         <li>
         <Link to='/articles' className="articlesIndex">Articles</Link>
         </li>
         <li>
-        
+        <Link to='/User' className="userProfile">Your profile</Link>
         </li>
       </ul>
      
@@ -57,6 +60,7 @@ class App extends Component {
         </div>
        </Switch>
       </Router >
+
     );
   }
 }
