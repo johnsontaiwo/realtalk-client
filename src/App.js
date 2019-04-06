@@ -52,7 +52,6 @@ class App extends Component {
         <Route  path='/userRegistration' component={ () => loggedIn() ? <Redirect to="/"/> : <UserRegistration/>} />
         <Route  path='/userLogin' component={ () => loggedIn() ? <Redirect to='/'/> : <LoginPage/>} />
         <Route  path='/logout' component={ () => logout() }/>
-        <Route  path='/users/:id' component={ () => loggedIn() ? <User/> : <Redirect to="/userLogin"/>} />
         <Route  path='/users/:id/articles/' component={ () => loggedIn() ? <User/> : <Redirect to="/userLogin"/>} />
         <Route  path='/users' component={usersContainer} />
         <Route exact path='/articles/:id' render={(props) => ( <Article key={props.match.params.id} {...props} />)} />
