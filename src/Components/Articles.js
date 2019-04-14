@@ -16,7 +16,7 @@ class Articles extends Component {
         { 
           articles.map(article => {
             return <li key={ article.id }><Link to={ `/articles/${ article.id }` }>{ article.title } </Link> 
-                    <button onClick={() => this.props.deleteArticle(article.id)}>Delete</button>
+                    
                    </li>
           })
         }
@@ -29,5 +29,4 @@ class Articles extends Component {
    
   
 export default Articles
-
 

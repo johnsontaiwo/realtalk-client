@@ -24,7 +24,7 @@ class User extends Component {
 
     return (
       <div>
-        <h5> Signed in as: { user.name } </h5>
+        <h5> Signed in as: { user.email } </h5>
         
       </div>
     );

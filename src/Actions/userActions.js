@@ -71,7 +71,7 @@ export const fetchUser = (id) => {
       .then(response => response.json())
       .then(user => {
         dispatch({
-          type: 'SET_USER',
+          type: 'GET_USER',
           payload: user
         })
       })

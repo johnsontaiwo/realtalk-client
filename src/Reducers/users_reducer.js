@@ -12,6 +12,10 @@ export default function usersReducer ( state = initialState, action){
   case "SET_USER":
    //debugger
    return {...state, current: action.payload}
+
+  case "GET_USER":
+   //debugger
+   return {...state, current: action.payload}
   
 default:
         return state

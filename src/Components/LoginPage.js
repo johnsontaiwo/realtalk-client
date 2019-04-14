@@ -39,7 +39,7 @@ class LoginPage extends Component {
     return(
      <div>
       <form className="userInfo" onSubmit={(event) => this.handleOnSubmit(event)} >
-        <p> Please Log in </p>
+        <p> Please Log in to read or comment on our latest articles</p>
         <input className="userEmail" type="text" placeholder="email address" name="email" value={ email } onChange={(event) => this.handleChange(event)}/> < br/>
         <input className="userPassword" type="password" placeholder="password" name="password" value={ password } onChange={(event) => this.handleChange(event)}/> < br/>
         <button type="submit" placeholder="Login"> Log in </button>
