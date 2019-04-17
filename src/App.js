@@ -23,7 +23,7 @@ class App extends Component {
       <Router >
        <Switch>
        <div className="App">
-       <User />
+       
        <ul>
        <li>
         <Link to='/' className="Home">Home</Link>
@@ -34,25 +34,21 @@ class App extends Component {
         <Link to='/userLogin' className="UserLogin">Login</Link> | 
         <Link to='/logout' className="UserLogin">Logout</Link>  
         </li>
-        
         <li>
-        <Link to='/articles' className="articlesIndex">Articles</Link>
-        </li>
-        <li>
-        <Link to='/User' className="userProfile">Your profile</Link>
+        <Link to='/user' className="userProfile">Your profile</Link>
         </li>
       </ul>
      
       <hr />
 
-        <Route exact path='/' component={ Home }/>
+        <Route exact path='/' component={ () => loggedIn() ? <Home /> : <Redirect to="/userLogin"/>}/>
         <Route  path='/articles' component={ () => loggedIn() ? <ArticleContainer/> : <Redirect to="/userLogin"/>}/>
         <Route  path='/articles/new' component={ArticleInput} />
         <Route  exact path='/articles/:id/comments/:id' component={Article} />
         <Route  path='/userRegistration' component={ () => loggedIn() ? <Redirect to="/"/> : <UserRegistration/>} />
         <Route  path='/userLogin' component={ () => loggedIn() ? <Redirect to='/'/> : <LoginPage/>} />
         <Route  path='/logout' component={ () => logout() }/>
-        <Route  path='/users/:id' component={ (props) => ( <User key={props.match.params.id} {...props} />)} />
+        <Route  path='/user' component={ () => loggedIn() ? <User /> : <Redirect to='/'/>} />
         <Route  path='/users/:id/articles/' component={ () => loggedIn() ? <User/> : <Redirect to="/userLogin"/>} />
         <Route  path='/users' component={usersContainer} />
         <Route exact path='/articles/:id' render={(props) => ( <Article key={props.match.params.id} {...props} />)} />

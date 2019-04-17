@@ -10,14 +10,15 @@ import Home from './Home'
 
 
 componentDidMount() {
-  this.props.fetchUsers()
+  debugger
+  this.props.fetchUser()
  }
 
   render() {
+
     return(
       <div>
-       <User user={this.props.user} />
-       
+       <User user={this.props.user} /> 
       </div>
       )
   }

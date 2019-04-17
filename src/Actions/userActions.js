@@ -58,16 +58,16 @@ export const signupUser = (user, callback) => {
 }
        
 export const fetchUser = (id) => {
-  let data = {
-    method: 'GET',
-    headers: {
+  const request = new Request(`${API_URL}/users/${id}`, {
+    method: "GET",
+    headers: new Headers({
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': sessionStorage.jwt
-    }
-  }
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${sessionStorage.jwt}`
+    }),
+  })
   return dispatch => {
-    fetch(`${ API_URL }/users/user/${id}`, data)
+    fetch(request)
       .then(response => response.json())
       .then(user => {
         dispatch({

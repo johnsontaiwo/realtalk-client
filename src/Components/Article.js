@@ -31,6 +31,7 @@ class Article extends Component {
   }
 
   render() {
+    //debugger
     const article = this.props.article 
     const allComments = this.props.article.comment && this.props.article.comment.map(comment => {
         return <Comment 

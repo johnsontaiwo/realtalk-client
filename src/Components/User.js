@@ -8,23 +8,26 @@ import { bindActionCreators } from 'redux';
 import { fetchUser } from  '../Actions/userActions'
 
 class User extends Component {
-
-  // componentDidMount() {
-  //   //debugger
-  //   this.props.fetchUser(this.props.user)
-  // }
  
+componentDidMount() {
+  //debugger
+    this.props.fetchUser(this.props.user.id)
+  }
+  
   render() {
     
     
     const  { user }  = this.props
-    const allArticles = this.props.user.article && this.props.user.article.map(article => {
-      return <Article key={article.id} article={article} userId={user.id} />
-    })
+    //debugger
+    // const allArticles = this.props.user.article && this.props.user.article.map(article => {
+    //   return <Article key={article.id} article={article} userId={user.id} />
+    // })
 
     return (
       <div>
         <h5> Signed in as: { user.email } </h5>
+        <h5> Email: { user.email } </h5>
+        
         
       </div>
     );
@@ -34,14 +37,13 @@ class User extends Component {
 
 const mapStateToProps = state => {
   return ({
-    user: state.users.current,
+    user: state.users.current
   })
 }
 
-const mapDispatchToProps = dispatch => {
-    return bindActionCreators(
-      {fetchUser }, dispatch);
-  }
+const mapDispatchToProps = dispatch => bindActionCreators({fetchUser}, dispatch);
+     
+  
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(User)

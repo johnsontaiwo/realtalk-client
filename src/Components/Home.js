@@ -11,8 +11,8 @@ class Home extends Component {
     const { user } = this.props
     return (
       <div>
-      <User />
-      <p>Welcome to Real Talk where real issues of life are discussed click on any article below to read and leave a comment</p>
+      
+      <p>Welcome to Real Talk where real issues of life are discussed, click on any article below to read and leave a comment</p>
       <ArticleContainer />
       </div>
       
