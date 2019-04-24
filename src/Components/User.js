@@ -25,8 +25,11 @@ componentDidMount() {
 
     return (
       <div>
+        <h5> Name: { user.name } </h5>
         <h5> Signed in as: { user.email } </h5>
         <h5> Email: { user.email } </h5>
+        <h5> Gender: { user.gender } </h5>
+        <h5> Date of Birth: { user.date_of_birth } </h5>
         
         
       </div>

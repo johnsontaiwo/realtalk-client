@@ -10,7 +10,9 @@ class UserRegistration extends Component {
   state = {
     name: '',
     email: '',
-    password: ''
+    password: '',
+    gender: '',
+    date_of_birth: ''
   }
 
   
@@ -37,12 +39,14 @@ handleOnSubmit = event => {
 
 
   render() {
-    const { name, email, password } = this.state
+    const { name, email, gender, date_of_birth, password } = this.state
     return(
      <div>
       <form className="userInfo" onSubmit={(event) => this.handleOnSubmit(event)} >
         <input className="userName" type="text" placeholder="Name" name="name" value={ name } onChange={(event) => this.handleChange(event)}/> <br />
         <input className="userEmail" type="text" placeholder="email address" name="email" value={ email } onChange={(event) => this.handleChange(event)}/> <br />
+        <input className="userEmail" type="text" placeholder="gender" name="gender" value={ gender } onChange={(event) => this.handleChange(event)}/> <br />
+        <input className="userEmail" type="text" placeholder="date of birth" name="date_of_birth" value={ date_of_birth } onChange={(event) => this.handleChange(event)}/> <br />
         <input className="userPassword" type="password" placeholder="password" name="password" value={ password } onChange={(event) => this.handleChange(event)}/> <br />
         <input type="submit" />
       </form>
