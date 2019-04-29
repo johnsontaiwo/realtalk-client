@@ -9,11 +9,21 @@ import { fetchUser, updateUser } from  '../Actions/userActions'
 
 class User extends Component {
  
+state = {
+
+  editable: false
+}
+
 componentDidMount() {
   //debugger
     this.props.fetchUser(this.props.user.id)
   }
   
+   handleEdit = (event) => {
+    console.log('Are you sure')
+
+   }
+
   
 
   render() {
