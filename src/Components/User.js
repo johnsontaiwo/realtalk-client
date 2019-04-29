@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Article from './Article'
 import { bindActionCreators } from 'redux';
-import { fetchUser } from  '../Actions/userActions'
+import { fetchUser, updateUser } from  '../Actions/userActions'
 
 class User extends Component {
  
@@ -14,6 +14,8 @@ componentDidMount() {
     this.props.fetchUser(this.props.user.id)
   }
   
+  
+
   render() {
     
     
@@ -24,9 +26,8 @@ componentDidMount() {
     // })
 
     return (
-      <div>
-        <h5> Name: { user.name } </h5>
-        <h5> Signed in as: { user.email } </h5>
+      <div className="userProfilePage">
+        <h5> Name: { user.name } </h5> <button onClick=<input type="text" defaultValue={ user.name }/>>Edit</button>
         <h5> Email: { user.email } </h5>
         <h5> Gender: { user.gender } </h5>
         <h5> Date of Birth: { user.date_of_birth } </h5>
@@ -44,7 +45,7 @@ const mapStateToProps = state => {
   })
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({fetchUser}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({fetchUser, updateUser}, dispatch);
      
   
 

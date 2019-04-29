@@ -56,6 +56,25 @@ export const signupUser = (user, callback) => {
       .catch(err => err)
   }
 }
+
+export const fetchUsers = () => {
+  const request = new Request(`${API_URL}/users`, {
+    method: "GET",
+    headers: new Headers({
+      'Accept': 'application/json',
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${sessionStorage.jwt}`
+    }),
+  })
+  return dispatch => {
+    return fetch(request)
+          .then(res => res.json())
+          .then(users => dispatch(getUsers(users)))
+          .catch(error => console.log(error))
+  }
+}
+
+
        
 export const fetchUser = (id) => {
   const request = new Request(`${API_URL}/users/${id}`, {
@@ -79,6 +98,27 @@ export const fetchUser = (id) => {
   }
 }
 
+
+export const updateUser = id => {
+  let data = {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }
+  return dispatch => {
+    fetch(`${ API_URL }/users/${ id }`, data)
+      .then(response => response.json())
+      .then(user => dispatch({
+        type: 'UPDATE_USER',
+        payload: user
+      }))
+      .catch(err => err)
+  }
+}
+
+
 export const deleteUser = id => {
   let data = {
     method: 'DELETE',
@@ -91,12 +131,14 @@ export const deleteUser = id => {
     fetch(`${ API_URL }/users/${ id }`, data)
       .then(response => response.json())
       .then(user => dispatch({
-        type: 'DELETE_TODO',
+        type: 'DELETE_USER',
         payload: user
       }))
       .catch(err => err)
   }
 }
+
+
 
 function handleResponse(response) {
     return response.text().then(text => {
@@ -118,23 +160,6 @@ function handleResponse(response) {
 function logout() {
     // remove user from local storage to log user out
   localStorage.removeItem('user');
-}
-
-export const fetchUsers = () => {
-  const request = new Request(`${API_URL}/users`, {
-    method: "GET",
-    headers: new Headers({
-      'Accept': 'application/json',
-      "Content-Type": "application/json",
-      'Authorization': `Bearer ${sessionStorage.jwt}`
-    }),
-  })
-  return dispatch => {
-    return fetch(request)
-          .then(res => res.json())
-          .then(users => dispatch(getUsers(users)))
-          .catch(error => console.log(error))
-  }
 }
 
 

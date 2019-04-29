@@ -79,7 +79,12 @@
   border: 1px solid blue; 
   background-color: #8000ff;
 }
-
+.userProfilePage{
+  text-align: center;
+  margin: 10px;
+  border: 1px white; 
+  background-color: white;
+}
 .articleComments{
   border: 1px solid;
   margin-left: 50px;
