@@ -85,6 +85,8 @@ export const fetchUser = (id) => {
       'Authorization': `Bearer ${sessionStorage.jwt}`
     }),
   })
+  
+    
   return dispatch => {
     fetch(request)
       .then(response => response.json())
@@ -99,16 +101,17 @@ export const fetchUser = (id) => {
 }
 
 
-export const updateUser = id => {
+export const updateUser = (user) => {
   let data = {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    }
+    },
+    body: JSON.stringify({ user })
   }
   return dispatch => {
-    fetch(`${ API_URL }/users/${ id }`, data)
+    fetch(`${ API_URL }/users/${ user.id }`, data)
       .then(response => response.json())
       .then(user => dispatch({
         type: 'UPDATE_USER',
@@ -139,7 +142,6 @@ export const deleteUser = id => {
 }
 
 
-
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
@@ -155,6 +157,7 @@ function handleResponse(response) {
         return data;
     });
 }
+
 
 
 function logout() {

@@ -16,9 +16,12 @@ export default function usersReducer ( state = initialState, action){
   case "GET_USER":
    //debugger
    return {...state, current: action.payload}
+
+   case "UPDATE_USER":
+    return {...state, current: action.payload}
   
 default:
         return state
 
-}
+  }
 }
