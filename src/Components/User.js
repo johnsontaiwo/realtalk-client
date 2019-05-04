@@ -47,24 +47,26 @@ componentDidMount() {
 
 
    
-    // //const allArticles = this.props.user.article && this.props.user.article.map(article => {
+    /// //const allArticles = this.props.user.article && this.props.user.article.map(article => {
     //   return <Article key={article.id} article={article} userId={user.id} />
     // })
 
     return (
-      <div className="userProfilePage">
-        <h5> Name: { name } </h5> 
-        <h5> Email: { email } </h5>
-        <h5> Gender: { gender } </h5>
-        <h5> Date of Birth: { date_of_birth } </h5>
+      <div>
+        <li className="userProfilePage">
+        <h5>Name: { name }</h5> 
+        <h5>Email: { email }</h5>
+        <h5>Gender: { gender }</h5>
+        <h5>Date of Birth: { date_of_birth }</h5>
         <button onClick={this.handleEdit}>{" "}
         {this.state.editable ? "Submit" : "Edit"}{" "}
         </button>
-        
+        </li>
       </div>
     );
   }
 }; 
+        
         
 
 const mapStateToProps = state => {
