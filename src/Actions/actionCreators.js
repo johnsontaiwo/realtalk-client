@@ -70,6 +70,27 @@ export const addArticle = article => {
 }
   
 
+export const updateArticle = (article) => {
+  let data = {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ article })
+  }
+  return dispatch => {
+    fetch(`${ API_URL }/articles/${ article.id }`, data)
+      .then(response => response.json())
+      .then(article => dispatch({
+        type: 'UPDATE_ARTICLE',
+        payload: article
+      }))
+      .catch(err => err)
+  }
+}
+
+
 export const deleteArticle = id => {
   let data = {
     method: 'DELETE',

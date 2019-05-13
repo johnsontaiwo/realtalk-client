@@ -22,6 +22,9 @@ export default function articlesReducer ( state = initialState, action) {
     case "DELETE_ARTICLE":
     return {...state, articles: state.articles.filter(article => article.id !== action.payload.id)}
 
+    case "UPDATE_ARTICLE":
+    return {...state, current: action.payload}
+
     case "ADD_COMMENT":
     let current = { ...state.current } 
      current.comment = current.comment.filter(comment => comment.id !== action.payload.id)
