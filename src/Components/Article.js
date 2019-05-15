@@ -20,7 +20,7 @@ class Article extends Component {
   }
 
   addLike = () => {
-    let likes = this.state.likes
+    let likes = this.props.article.like
     likes++ 
 
     this.setState({ likes })
@@ -51,7 +51,7 @@ class Article extends Component {
       <h5>Title: {article.title} </h5>
       <h5>Content: {article.content} </h5>
       <h5>Author: {article.author_name} </h5>
-      <h5>Like: {this.state.likes} </h5>
+      <h5>Like: {article.like} </h5>
       <button onClick={() => {this.addLike()}}>Like</button>
       <h5>Comments: { allComments } </h5>
       <CommentInput article={article} articleId={this.props.article.id} />
