@@ -1,6 +1,6 @@
 const initialState = {
   articles: [],
-  current: { title: '', content: '',  author_name: '', like: '',  comment: [] }
+  current: { title: '', content: '',  author_name: '', likes: '',  comment: [] }
 }
 
 

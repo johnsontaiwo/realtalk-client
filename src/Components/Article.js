@@ -5,7 +5,7 @@ import CommentContainer from  './CommentsContainer';
 import CommentInput from  './CommentInput';
 import Comment from './Comment';
 import { fetchComments, deleteComment } from '../Actions/commentActions';
-import { deleteArticle, fetchArticle } from '../Actions/actionCreators';
+import { deleteArticle, fetchArticle, addLike } from '../Actions/actionCreators';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import User from './User'
@@ -19,12 +19,13 @@ class Article extends Component {
     likes: 0
   }
 
-  addLike = () => {
-    let likes = this.props.article.like
-    likes++ 
-
-    this.setState({ likes })
+  addLikes = () => {
+    this.props.article.likes++
+    const {id, likes, title, author_name} = this.props.article
+    this.props.addLike(this.props.article)
+    this.setState( {likes})
   }
+    
 
   componentDidMount() {
     this.props.fetchArticle(this.props.match.params.id)
@@ -51,8 +52,8 @@ class Article extends Component {
       <h5>Title: {article.title} </h5>
       <h5>Content: {article.content} </h5>
       <h5>Author: {article.author_name} </h5>
-      <h5>Like: {article.like} </h5>
-      <button onClick={() => {this.addLike()}}>Like</button>
+      <h5>Like: {article.likes} </h5>
+      <button onClick={() => {this.addLikes()}}>Like</button>
       <h5>Comments: { allComments } </h5>
       <CommentInput article={article} articleId={this.props.article.id} />
       </li>
@@ -72,7 +73,7 @@ class Article extends Component {
       
 
  const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchArticle, deleteArticle, deleteComment, fetchComments
+  fetchArticle, deleteArticle, deleteComment, fetchComments, addLike
  }, dispatch)
 
 

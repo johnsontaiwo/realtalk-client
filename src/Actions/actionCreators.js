@@ -90,6 +90,27 @@ export const updateArticle = (article) => {
   }
 }
 
+export const addLike = (article) => {
+  let data = {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage.jwt}`
+    },
+     body: JSON.stringify({ article })
+  }
+  return dispatch => {
+   //debugger
+    fetch(`${ API_URL }/articles/${article.id}`, data)
+      .then(response => response.json())
+      .then(article => dispatch({
+        type: 'ADD_LIKE',
+        payload: article
+      }))
+      .catch(err => err)
+  }
+}
 
 export const deleteArticle = id => {
   let data = {
