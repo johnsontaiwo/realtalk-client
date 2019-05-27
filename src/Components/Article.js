@@ -15,9 +15,9 @@ import User from './User'
 
 class Article extends Component {
   
-  state = {
-    likes: 0
-  }
+  // state = {
+  //   likes: 0
+  // }
 
   addLikes = () => {
     this.props.article.likes++
@@ -39,7 +39,7 @@ class Article extends Component {
           key={ comment.id } 
           comment={ comment } 
           articleId={article.id} 
-          like={ this.state.likes }
+          //like={ this.state.likes }
           addLike={ this.addLike }
           deleteComment={this.props.deleteComment} 
          />

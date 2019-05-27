@@ -44,6 +44,28 @@ export const addComment =  (comment, articleId) => {
   }
 }
 
+export const addLikeToComment = (comment, articleId) => {
+  let data = {
+    method: "PUT",
+    headers: {
+      'Accept': 'application/json',
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${sessionStorage.jwt}`
+    },
+    body: JSON.stringify({ comment: comment})
+  }
+  return dispatch => {
+    return fetch(`${API_URL}/articles/${articleId}/comments`, data)
+    .then(resp => resp.json)
+    .then(comment => dispatch({
+      type: "ADD_LIKE_TO_COMMENT",
+      payload: comment
+    }),
+    dispatch(fetchArticle(articleId)))
+    .catch(error => console.log(error))
+  }
+}
+
 export const deleteComment =  (articleId, commentId) => {
   let data = {
     method: 'DELETE',
