@@ -21,10 +21,10 @@ render() {
       <Comments comments={this.props.comments} deleteComment={this.props.deleteComment} />
     </div>
 
-
     )
   }
 }
+
 
 
 

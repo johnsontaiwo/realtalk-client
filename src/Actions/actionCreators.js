@@ -45,7 +45,6 @@ export const fetchArticle = (id) => {
 }
      
 export const addArticle = article => {
-  console.log('C')
      let data = { 
       method: "POST",
       headers: {
@@ -101,7 +100,7 @@ export const addLike = (article) => {
      body: JSON.stringify({ article })
   }
   return dispatch => {
-   //debugger
+   
     fetch(`${ API_URL }/articles/${article.id}`, data)
       .then(response => response.json())
       .then(article => dispatch({

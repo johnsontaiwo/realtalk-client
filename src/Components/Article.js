@@ -4,7 +4,7 @@ import Articles from './Articles';
 import CommentContainer from  './CommentsContainer';
 import CommentInput from  './CommentInput';
 import Comment from './Comment';
-import { fetchComments, deleteComment } from '../Actions/commentActions';
+import { fetchComments, deleteComment, addLikeToComment } from '../Actions/commentActions';
 import { deleteArticle, fetchArticle, addLike } from '../Actions/actionCreators';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
@@ -15,33 +15,29 @@ import User from './User'
 
 class Article extends Component {
   
-  // state = {
-  //   likes: 0
-  // }
 
-  addLikes = () => {
-    this.props.article.likes++
-    const {id, likes, title, author_name} = this.props.article
-    this.props.addLike(this.props.article)
-    this.setState( {likes})
-  }
+    addLikes = () => {
+      this.props.article.likes++
+      const {id, likes, title, author_name} = this.props.article
+      this.props.addLike(this.props.article)
+    }
     
+    
+    componentDidMount() {
+      this.props.fetchArticle(this.props.match.params.id)
+    }
 
-  componentDidMount() {
-    this.props.fetchArticle(this.props.match.params.id)
-  }
 
   render() {
-    //debugger
     const article = this.props.article 
     const allComments = this.props.article.comment && this.props.article.comment.map(comment => {
         return <Comment 
           key={ comment.id } 
           comment={ comment } 
           articleId={article.id} 
-          //like={ this.state.likes }
-          addLike={ this.addLike }
-          deleteComment={this.props.deleteComment} 
+          addLikeToComment={this.props.addLikeToComment}
+          deleteComment={this.props.deleteComment}
+          fetchArticle={this.props.fetchArticle} 
          />
       })
       
@@ -59,8 +55,7 @@ class Article extends Component {
       </li>
       </ul>
     </div>
-)}
-
+  )}
 }
 
 
@@ -73,7 +68,7 @@ class Article extends Component {
       
 
  const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchArticle, deleteArticle, deleteComment, fetchComments, addLike
+  fetchArticle, deleteArticle, deleteComment, fetchComments, addLike, addLikeToComment
  }, dispatch)
 
 

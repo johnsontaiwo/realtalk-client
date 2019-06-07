@@ -15,7 +15,6 @@ state = {
 }
 
 componentDidMount() {
-  //debugger
     this.props.fetchUser(this.props.user.id)
   }
   
@@ -44,12 +43,6 @@ componentDidMount() {
     var email = this.state.editable ? <input type="text" ref="email" defaultValue={ user.email } /> : <h5>{ user.email }</h5>
     var gender = this.state.editable ? <input type="text" ref="gender" defaultValue={ user.gender } /> : <h5>{ user.gender }</h5>
     var date_of_birth = this.state.editable ? <input type="text" ref="date_of_birth" defaultValue={ user.date_of_birth } /> : <h5>{ user.date_of_birth }</h5>
-
-
-   
-    /// //const allArticles = this.props.user.article && this.props.user.article.map(article => {
-    //   return <Article key={article.id} article={article} userId={user.id} />
-    // })
 
     return (
       <div>
@@ -81,3 +74,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({fetchUser, updateUser
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(User)
+  
+

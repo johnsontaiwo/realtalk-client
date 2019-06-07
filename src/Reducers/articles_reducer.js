@@ -25,6 +25,9 @@ export default function articlesReducer ( state = initialState, action) {
     case "UPDATE_ARTICLE":
     return {...state, current: action.payload}
 
+    case "ADD_LIKE":
+    return {...state, current: action.payload}
+
     case "ADD_COMMENT":
     let current = { ...state.current } 
      current.comment = current.comment.filter(comment => comment.id !== action.payload.id)

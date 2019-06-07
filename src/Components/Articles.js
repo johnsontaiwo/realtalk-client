@@ -15,9 +15,7 @@ class Articles extends Component {
       <ul>
         { 
           articles.map(article => {
-            return <li key={ article.id }><Link to={ `/articles/${ article.id }` }>{ article.title } </Link> 
-                    
-                   </li>
+            return <li key={ article.id }><Link to={ `/articles/${ article.id }` }>{ article.title } </Link> </li>
           })
         }
        <p> <ArticleInput /> </p>

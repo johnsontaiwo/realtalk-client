@@ -1,4 +1,4 @@
- import { fetchArticle } from '../Actions/actionCreators'
+ import { fetchArticle, updateArticle } from '../Actions/actionCreators'
  const API_URL = 'http://localhost:3001/api/v1'
 
  export const fetchComments = (article) => {
@@ -44,7 +44,7 @@ export const addComment =  (comment, articleId) => {
   }
 }
 
-export const addLikeToComment = (comment, articleId) => {
+export const addLikeToComment = (articleId, comment) => {
   let data = {
     method: "PUT",
     headers: {
@@ -55,7 +55,7 @@ export const addLikeToComment = (comment, articleId) => {
     body: JSON.stringify({ comment: comment})
   }
   return dispatch => {
-    return fetch(`${API_URL}/articles/${articleId}/comments`, data)
+    return fetch(`${API_URL}/articles/${articleId}/comments/${comment.id}`, data)
     .then(resp => resp.json)
     .then(comment => dispatch({
       type: "ADD_LIKE_TO_COMMENT",
