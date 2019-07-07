@@ -69,9 +69,16 @@
   margin: 10px;
   border: 1px solid blue; 
 }
+.userLogout{
+  margin: 10px;
+  text-align: right;
+}
 .userEmail{
   margin: 10px;
   border: 1px solid blue; 
+}
+.userRegistration{
+  margin: 10px;
 }
 .userInfo{
   text-align: center;
@@ -90,6 +97,8 @@
   margin-left: 50px;
   margin-right: 50px;
 }
+
+
 div p{
   text-align: center;
   font: italic bold 20px/30px Georgia, serif; 

@@ -10,12 +10,11 @@ import Home from './Home'
 
 
 componentDidMount() {
-  debugger
+  
   this.props.fetchUser()
  }
 
   render() {
-
     return(
       <div>
        <User user={this.props.user} /> 
@@ -23,6 +22,7 @@ componentDidMount() {
       )
   }
  }
+
 
 const mapStateToProps = state => {
   return ({

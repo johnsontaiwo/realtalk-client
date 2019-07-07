@@ -19,11 +19,18 @@ class Articles extends Component {
           })
         }
        <p> <ArticleInput /> </p>
+       <nav className="navbar navbar-default navbar-static-top">
+        <li>
+       <Link to='/logout'>Logout</Link> |
+       <Link to='/user' className="userProfile">Your profile</Link>
+      </li> 
+      </nav>
       </ul>
       </div>
     )
   }
 }
+        
    
   
 export default Articles
